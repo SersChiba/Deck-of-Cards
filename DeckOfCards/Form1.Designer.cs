@@ -32,12 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.deck2 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.resetDeck1 = new System.Windows.Forms.Button();
+            this.resetDeck2 = new System.Windows.Forms.Button();
+            this.shuffleDeck1 = new System.Windows.Forms.Button();
+            this.shuffleDeck2 = new System.Windows.Forms.Button();
+            this.moveToDeck2 = new System.Windows.Forms.Button();
+            this.moveToDeck1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // deck1
@@ -74,71 +74,77 @@
             this.deck2.Size = new System.Drawing.Size(143, 290);
             this.deck2.TabIndex = 3;
             // 
-            // button1
+            // resetDeck1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 337);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Reset Deck #1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.resetDeck1.Location = new System.Drawing.Point(12, 337);
+            this.resetDeck1.Name = "resetDeck1";
+            this.resetDeck1.Size = new System.Drawing.Size(139, 23);
+            this.resetDeck1.TabIndex = 4;
+            this.resetDeck1.Text = "Reset Deck #1";
+            this.resetDeck1.UseVisualStyleBackColor = true;
+            this.resetDeck1.Click += new System.EventHandler(this.resetDeck1_Click);
             // 
-            // button2
+            // resetDeck2
             // 
-            this.button2.Location = new System.Drawing.Point(209, 337);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(143, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Reset Deck #2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.resetDeck2.Location = new System.Drawing.Point(209, 337);
+            this.resetDeck2.Name = "resetDeck2";
+            this.resetDeck2.Size = new System.Drawing.Size(143, 23);
+            this.resetDeck2.TabIndex = 5;
+            this.resetDeck2.Text = "Reset Deck #2";
+            this.resetDeck2.UseVisualStyleBackColor = true;
+            this.resetDeck2.Click += new System.EventHandler(this.resetDeck2_Click);
             // 
-            // button3
+            // shuffleDeck1
             // 
-            this.button3.Location = new System.Drawing.Point(12, 366);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(139, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Shuffle Deck #1";
-            this.button3.UseVisualStyleBackColor = true;
+            this.shuffleDeck1.Location = new System.Drawing.Point(12, 366);
+            this.shuffleDeck1.Name = "shuffleDeck1";
+            this.shuffleDeck1.Size = new System.Drawing.Size(139, 23);
+            this.shuffleDeck1.TabIndex = 6;
+            this.shuffleDeck1.Text = "Shuffle Deck #1";
+            this.shuffleDeck1.UseVisualStyleBackColor = true;
+            this.shuffleDeck1.Click += new System.EventHandler(this.shuffleDeck1_Click);
             // 
-            // button4
+            // shuffleDeck2
             // 
-            this.button4.Location = new System.Drawing.Point(209, 366);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(143, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Shuffle Deck #2";
-            this.button4.UseVisualStyleBackColor = true;
+            this.shuffleDeck2.Location = new System.Drawing.Point(209, 366);
+            this.shuffleDeck2.Name = "shuffleDeck2";
+            this.shuffleDeck2.Size = new System.Drawing.Size(143, 23);
+            this.shuffleDeck2.TabIndex = 7;
+            this.shuffleDeck2.Text = "Shuffle Deck #2";
+            this.shuffleDeck2.UseVisualStyleBackColor = true;
+            this.shuffleDeck2.Click += new System.EventHandler(this.shuffleDeck2_Click);
             // 
-            // button5
+            // moveToDeck2
             // 
-            this.button5.Location = new System.Drawing.Point(158, 128);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(45, 23);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "> >";
-            this.button5.UseVisualStyleBackColor = true;
+            this.moveToDeck2.Location = new System.Drawing.Point(158, 128);
+            this.moveToDeck2.Name = "moveToDeck2";
+            this.moveToDeck2.Size = new System.Drawing.Size(45, 23);
+            this.moveToDeck2.TabIndex = 8;
+            this.moveToDeck2.Text = "> >";
+            this.moveToDeck2.UseVisualStyleBackColor = true;
+            this.moveToDeck2.Click += new System.EventHandler(this.moveToDeck2_Click);
             // 
-            // button6
+            // moveToDeck1
             // 
-            this.button6.Location = new System.Drawing.Point(158, 172);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(45, 23);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "< <";
-            this.button6.UseVisualStyleBackColor = true;
+            this.moveToDeck1.Location = new System.Drawing.Point(158, 172);
+            this.moveToDeck1.Name = "moveToDeck1";
+            this.moveToDeck1.Size = new System.Drawing.Size(45, 23);
+            this.moveToDeck1.TabIndex = 9;
+            this.moveToDeck1.Text = "< <";
+            this.moveToDeck1.UseVisualStyleBackColor = true;
+            this.moveToDeck1.Click += new System.EventHandler(this.moveToDeck1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 401);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.moveToDeck1);
+            this.Controls.Add(this.moveToDeck2);
+            this.Controls.Add(this.shuffleDeck2);
+            this.Controls.Add(this.shuffleDeck1);
+            this.Controls.Add(this.resetDeck2);
+            this.Controls.Add(this.resetDeck1);
             this.Controls.Add(this.deck2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -156,12 +162,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox deck2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button resetDeck1;
+        private System.Windows.Forms.Button resetDeck2;
+        private System.Windows.Forms.Button shuffleDeck1;
+        private System.Windows.Forms.Button shuffleDeck2;
+        private System.Windows.Forms.Button moveToDeck2;
+        private System.Windows.Forms.Button moveToDeck1;
     }
 }
 

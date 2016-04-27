@@ -8,16 +8,23 @@ namespace DeckOfCards
 {
     class Deck
     {
-        public List<Card> deckNo1 = new List<Card>();
-        public List<Card> deckNo2 = new List<Card>();
-
-        public void PopulateDeck()
+        private int deckSize { get; }
+        public Deck()
         {
-            deckNo1 = GenerateCards(10);
-            deckNo2 = GenerateCards(52);
+            deckSize = deckSize;
+        }
+        //public List<Card> PopulateDeck(int deckSize)
+        //{
+        //    return GenerateCards(deckSize);
+        //   // deckNo2 = GenerateCards(52);
+        //}
+        public string GetCardNames()
+        {
+            foreach(var card in )
+            return 
         }
 
-        private List<Card> GenerateCards(int cardCount)
+        public List<Card> GenerateCards(int cardCount)
         {
             Random random = new Random();
             List<Card> generatedDeck = new List<Card>();
