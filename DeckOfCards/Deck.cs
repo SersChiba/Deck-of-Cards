@@ -6,33 +6,54 @@ using System.Threading.Tasks;
 
 namespace DeckOfCards
 {
-    class Deck
+    public class Deck
     {
-        private int deckSize { get; }
+        private List<Card> cards;
+        private Random random = new Random();
         public Deck()
         {
-            deckSize = deckSize;
-        }
-        //public List<Card> PopulateDeck(int deckSize)
-        //{
-        //    return GenerateCards(deckSize);
-        //   // deckNo2 = GenerateCards(52);
-        //}
-        public string GetCardNames()
-        {
-            foreach(var card in )
-            return 
+            cards = new List<Card>();
+            for (int suit = 0; suit <= 3; suit++)
+                for (int value = 1; value <= 13; value++)
+                    cards.Add(new Card((Suits)suit, (Values)value));
         }
 
-        public List<Card> GenerateCards(int cardCount)
+        public Deck(IEnumerable<Card> initialCards)
         {
-            Random random = new Random();
-            List<Card> generatedDeck = new List<Card>();
-            for (int i = 0; i < cardCount; i++)
+            cards = new List<Card>(initialCards);
+        }
+        public int Count { get { return cards.Count; } }
+        public void Add(Card cardToAdd)
+        {
+            cards.Add(cardToAdd);
+        }
+        public Card Deal(int index)
+        {
+            Card cardToDeal = cards[index];
+            cards.RemoveAt(index);
+            return cardToDeal;
+        }
+        public void Shuffle()
+        {
+            List<Card> newCards = new List<Card>();
+            while (cards.Count > 0)
             {
-                generatedDeck.Add(new Card((Suits)random.Next(4), (Values)random.Next(1, 14)));
+                int cardToMove = random.Next(cards.Count);
+                newCards.Add(cards[cardToMove]);
+                cards.RemoveAt(cardToMove);
             }
-            return generatedDeck;
-        }        
+            cards = newCards;
+        }
+        public IEnumerable<string> GetCardNames()
+        {
+            string[] cardNames = new string[cards.Count];
+            for (int i = 0; i < cards.Count; i++)
+                cardNames[i] = cards[i].Name;
+            return cardNames; ;
+        }
+        public void Sort()
+        {
+            cards.Sort(new CardComparer_bySuit());
+        }
     }
 }

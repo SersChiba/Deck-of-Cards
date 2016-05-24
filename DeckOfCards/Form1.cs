@@ -12,89 +12,114 @@ namespace DeckOfCards
 {
     public partial class Form1 : Form
     {
-        Deck deck = new Deck();
-        List<Card> deckNo1 = new List<Card>();
-        List<Card> deckNo2 = new List<Card>();
+        Deck deckNo1;
+        Deck deckNo2;
         Random random = new Random();
         public Form1()
         {
             InitializeComponent();
+            ResetDeck(1);
+            ResetDeck(2);
+            RedrawDeck(1);
+            RedrawDeck(2);
         }
-        public void DrawCards()
+        //public void PopulateDeck()
+        //{
+        //    deckNo1 = GenerateCards(10);
+        //    deckNo2 = GenerateCards(52);
+        //}
+        //public void PopulateDeck(int deckNumber)
+        //{
+        //    if (deckNumber == 1)
+        //        deckNo1 = GenerateCards(10);
+        //    else if (deckNumber == 2)
+        //        deckNo2 = GenerateCards(52);
+        //}
+        private List<Card> GenerateCards(int cardCount)
         {
-            string result = "";
-            deckNo1 = deck.GenerateCards(10);
-            deckNo2 = deck.GenerateCards(52);
-            foreach (var card in deckNo1)
+            Random random = new Random();
+            List<Card> generatedDeck = new List<Card>();
+            for (int i = 0; i < cardCount; i++)
             {
-                result += card.Name + "\n";
+                generatedDeck.Add(new Card((Suits)random.Next(4), (Values)random.Next(1, 14)));
             }
-            deck1.Text = result;
+            return generatedDeck;
         }
-        public void ResetDeck(int deckNo)
+        private void ResetDeck(int deckNumber)
         {
-            switch (deckNo)
+            if (deckNumber == 1)
             {
-                case 1:
-                    deck1.Items.Clear();
-                    deckNo1 = deck.GenerateCards(random.Next(1, 11));
-                    break;
-                case 2:
-                    deck2.Items.Clear();
-                    deckNo2 = deck.GenerateCards(52);
-                    break;
+                int numberOfCards = random.Next(1, 11);
+                deckNo1 = new Deck(new Card[] { });
+                for (int i = 0; i < numberOfCards; i++)
+                {
+                    deckNo1.Add(new Card((Suits)random.Next(4), (Values)random.Next(1, 14)));
+                }
+                deckNo1.Sort();
             }
+            else if (deckNumber == 2)
+                deckNo2 = new Deck();
         }
-        private void RedrawDeck(int DeckNumber)
+        private void RedrawDeck(int deckNumber)
         {
-            if (DeckNumber==1)
+            if (deckNumber == 1)
             {
                 deck1.Items.Clear();
                 foreach (string cardName in deckNo1.GetCardNames())
-                {
                     deck1.Items.Add(cardName);
-                    label1.Text = "Deck #" + DeckNumber + " (" + deckNo1.Count + " cards)";
-                }
+                label1.Text = "Deck #1 (" + deckNo1.Count + " cards)";
             }
-            else
+            else if (deckNumber == 2)
             {
                 deck2.Items.Clear();
                 foreach (string cardName in deckNo2.GetCardNames())
-                {
                     deck2.Items.Add(cardName);
-                    label2.Text= "Deck #" + DeckNumber + " (" + deckNo2.Count + " cards)";
-                }
+                label2.Text = "Deck #2 (" + deckNo2.Count + " cards)";
             }
         }
 
-        private void resetDeck1_Click(object sender, EventArgs e)
+        private void reset1_Click(object sender, EventArgs e)
         {
-
+            ResetDeck(1);
+            RedrawDeck(1);
         }
 
-        private void resetDeck2_Click(object sender, EventArgs e)
+        private void reset2_Click(object sender, EventArgs e)
         {
-
+            ResetDeck(2);
+            RedrawDeck(2);
         }
 
-        private void shuffleDeck1_Click(object sender, EventArgs e)
+        private void shuffle1_Click(object sender, EventArgs e)
         {
-
+            deckNo1.Shuffle();
+            RedrawDeck(1);
         }
 
-        private void shuffleDeck2_Click(object sender, EventArgs e)
+        private void shuffle2_Click(object sender, EventArgs e)
         {
-
+            deckNo2.Shuffle();
+            RedrawDeck(2);
         }
 
         private void moveToDeck2_Click(object sender, EventArgs e)
         {
-
+            if (deck1.SelectedIndex>=0)
+            {
+                deckNo2.Add(deckNo1.Deal(deck1.SelectedIndex));
+            }
+            RedrawDeck(1);
+            RedrawDeck(2);
         }
 
         private void moveToDeck1_Click(object sender, EventArgs e)
         {
-
+            if (deck2.SelectedIndex>=0)
+            {
+                deckNo1.Add(deckNo2.Deal(deck2.SelectedIndex));
+            }
+            RedrawDeck(1);
+            RedrawDeck(2);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeckOfCards
 {
-    class Card
+    public class Card
     {
         public Suits Suit { get; private set; }
         public Values Value { get; private set; }
@@ -34,12 +34,17 @@ namespace DeckOfCards
                 return true;
             else return false;
         }
+
+        public string GetCardNames()
+        {
+            return "test";
+        }
     }
-    enum Suits
+    public enum Suits
     {
         Spades, Clubs, Diamonds, Hearts,
     }
-    enum Values
+    public enum Values
     {
         Ace = 1, Two = 2, Three = 3, Four = 4, Five = 5, Six = 6, Seven = 7, Eight = 8, Nine = 9, Ten = 10, Jack = 11, Queen = 12, King = 13,
     }
@@ -57,6 +62,21 @@ namespace DeckOfCards
                 return -1;
             if (x.Suit > y.Suit)
                 return 1;
+            return 0;
+        }
+    }
+    class CardComparer_bySuit : IComparer<Card>
+    {
+        public int Compare(Card x, Card y)
+        {
+            if (x.Suit < y.Suit)
+                return -1;
+            if (x.Suit > y.Suit)
+                return 1;
+            if (x.Value < y.Value)
+                return -1;
+            if (x.Value > y.Value)
+                return 1;            
             return 0;
         }
     }
